@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(layouts);
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: 'brocks wrong too',
   resave: false,
   saveUninitialized: true
 }));

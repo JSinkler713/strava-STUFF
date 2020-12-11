@@ -66,11 +66,15 @@ function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
 
+
     // To keep the example simple, the user's Strava profile is returned to
     // represent the logged-in user.  In a typical application, you would want
     // to associate the Strava account with a user record in your database,
     // and return that user instead.
-    return done(null, profile);
+    console.log(refreshToken, profile)
+
+    //dare excepted, you can do this
+    return done(null, { ...profile, ...refreshToken});
   });
 }
 ));

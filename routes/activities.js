@@ -17,14 +17,20 @@ var fs = require('fs');
 //   });
 
 // TESTING API CONNECTION
-router.get('/', function(req,res) {
+router.get('/', function(req, res) {
   // get athlete stats
-  const athleteUrl = "https://www.strava.com/api/v3/athlete/activities?before=&after=&page=&per_page=?access_token=fe9fc712776f9d108a439b35c6c7f9a9e55bc69b"
+  console.log('***********************')
+  console.log(req.user)
+  console.log('***********************')
+  res.send('super strong')
+  /*
+  const athleteUrl = "https://www.strava.com/api/v3/athlete/activities"
     axios.get(athleteUrl, { withCredentials: true })
     .then( function(apiResponse) {
-    console.log(apiResponse)
+//    console.log(apiResponse)
     res.render('activities')
   })
+  */
 })
 
 // "https://www.strava.com/api/v3/athlete/activities?before=&after=&page=&per_page=" "Authorization: Bearer [[token]]"
@@ -37,7 +43,7 @@ router.get('/', function(req,res) {
 
 
 
-https://www.strava.com/oauth/authorize?client_id=57767&redirect_uri=http://127.0.0.1:3000/auth/strava/callback&response_type=code&scope=read_all
+//https://www.strava.com/oauth/authorize?client_id=57767&redirect_uri=http://127.0.0.1:3000/auth/strava/callback&response_type=code&scope=read_all
 
 
 
