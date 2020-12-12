@@ -19,18 +19,24 @@ var fs = require('fs');
 // TESTING API CONNECTION
 router.get('/', function(req, res) {
   // get athlete stats
-  console.log('***********************')
-  console.log(req.user)
-  console.log('***********************')
-  res.send('super strong')
-  /*
+  // res.send('super strong')
+  console.log("~~~~~~~~~~~~~~~~~~~~~")
+  console.log(req.user.access_token)
+  console.log("~~~~~~~~~~~~~~~~~~~~~")
+
   const athleteUrl = "https://www.strava.com/api/v3/athlete/activities"
-    axios.get(athleteUrl, { withCredentials: true })
+    
+  axios
+    .get(athleteUrl, {},
+      {
+        headers: {
+          "Authorization": `Bearer ${req.user.access_token}`
+        }
+      })
     .then( function(apiResponse) {
-//    console.log(apiResponse)
-    res.render('activities')
-  })
-  */
+      console.log(apiResponse)
+      res.render('activities')
+    })
 })
 
 // "https://www.strava.com/api/v3/athlete/activities?before=&after=&page=&per_page=" "Authorization: Bearer [[token]]"
