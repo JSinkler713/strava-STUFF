@@ -21,21 +21,26 @@ router.get('/', function(req, res) {
   // get athlete stats
   // res.send('super strong')
   console.log("~~~~~~~~~~~~~~~~~~~~~")
-  console.log(req.user.access_token)
+  console.log(req.user)
   console.log("~~~~~~~~~~~~~~~~~~~~~")
 
   const athleteUrl = "https://www.strava.com/api/v3/athlete/activities"
     
   axios
-    .get(athleteUrl, {},
+    .get(athleteUrl,
       {
         headers: {
           "Authorization": `Bearer ${req.user.access_token}`
         }
-      })
-    .then( function(apiResponse) {
+      }
+    )
+    .then(function(apiResponse) {
       console.log(apiResponse)
       res.render('activities')
+    })
+    .catch(err => {
+      console.log(err)
+      res.send('error')
     })
 })
 

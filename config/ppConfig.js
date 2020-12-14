@@ -40,8 +40,8 @@ const StravaStrategy = require('passport-strava-oauth2').Strategy
 
 // Strava Strategy
 passport.use(new StravaStrategy({
-  clientID: 57767,
-  clientSecret: '4f5669e3201a690c9e1f74ab0da07ad37b73a36d',
+  clientID: 58043,
+  clientSecret: 'da48b83ca2c90189566198e06ce27d706aabd448',
   callbackURL: "http://localhost:3000/auth/strava/callback"
 },
 function(accessToken, refreshToken, profile, done) {
@@ -49,7 +49,9 @@ function(accessToken, refreshToken, profile, done) {
     // represent the logged-in user.  In a typical application, you would want
     // to associate the Strava account with a user record in your database,
     // and return that user instead.
-    
+    console.log("Refresh token ", refreshToken);
+    console.log("Access token ", accessToken);
+
     db.user.findOrCreate({ 
       where: { strava_id: profile.id },
       defaults: {
@@ -58,7 +60,6 @@ function(accessToken, refreshToken, profile, done) {
         strava_id: profile.id
       }
     }).then(async user => {
-      console.log(accessToken)
       user[0].access_token = accessToken;
       await user[0].save()
 
