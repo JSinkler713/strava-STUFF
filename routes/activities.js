@@ -35,7 +35,7 @@ router.get('/', function(req, res) {
       }
     )
     .then(function(apiResponse) {
-      console.log(apiResponse)
+      console.log(apiResponse.data)
       res.render('activities')
     })
     .catch(err => {
